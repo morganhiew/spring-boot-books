@@ -4,10 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestController {
-  @GetMapping("/hello")
-  public String getMethodName() {
-    return "Hello";
+public class HealthCheckController {
+
+  @GetMapping("/health")
+  public String healthCheck() {
+    return "Healthy!";
   }
 
 }
