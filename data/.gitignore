@@ -1,0 +1,5 @@
+# This is to create an empty data folder space in git
+# Ignore every file in this folder
+*
+# Except this one
+!.gitignore
