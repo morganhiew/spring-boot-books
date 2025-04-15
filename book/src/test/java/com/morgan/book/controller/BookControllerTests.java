@@ -81,13 +81,6 @@ public class BookControllerTests {
                         positiveCase.andExpect(status().isUnsupportedMediaType());
                 }
 
-                // @Test
-                // public void contentNotBook() throws Exception {
-                //         ResultActions positiveCase = mvc.perform(post("/books")
-                //                         .contentType(MediaType.APPLICATION_JSON)
-                //                         .content("{\"author1\":\"Arthur\",\"title\":\"Great Expectations\",\"published\":true}"));
-                //         positiveCase.andExpect(status().isUnsupportedMediaType());
-                // }
         }
 
         @Nested

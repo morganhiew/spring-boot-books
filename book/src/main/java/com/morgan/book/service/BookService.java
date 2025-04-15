@@ -9,15 +9,13 @@ import org.springframework.stereotype.Service;
 import com.morgan.book.model.Book;
 import com.morgan.book.repository.BookRepository;
 
-import jakarta.validation.Valid;
-
 @Service
 public class BookService {
 
   @Autowired
   private BookRepository bookRepository;
 
-  public Book create(@Valid Book book) {
+  public Book create(Book book) {
     return bookRepository.save(book);
   }
 
