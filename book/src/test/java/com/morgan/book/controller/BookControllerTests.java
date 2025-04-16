@@ -39,12 +39,12 @@ public class BookControllerTests {
         @BeforeEach
         public void setup() {
                 Book testBookNormal1 = new Book();
-                testBookNormal1.setId((long) 42);
+                testBookNormal1.setId(42L);
                 testBookNormal1.setAuthor("Arthur");
                 testBookNormal1.setTitle("Great Expectations");
                 testBookNormal1.setPublished(true);
                 Book testBookNormal2 = new Book();
-                testBookNormal2.setId((long) 43);
+                testBookNormal2.setId(43L);
                 testBookNormal2.setAuthor("Bob");
                 testBookNormal2.setTitle("Builder Book");
                 testBookNormal2.setPublished(false);
@@ -61,24 +61,25 @@ public class BookControllerTests {
         @Nested
         class postBookTests {
                 @Test
-                public void normalCase() throws Exception {
-                        ResultActions positiveCase = mvc.perform(post("/books")
+                public void postBook() throws Exception {
+                        ResultActions testCase = mvc.perform(post("/books")
                                         .contentType(MediaType.APPLICATION_JSON)
                                         .content("{\"author\":\"Arthur\",\"title\":\"Great Expectations\",\"published\":true}"));
-                        positiveCase.andExpect(status().isOk())
+                        testCase.andExpect(status().isOk())
                                         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                                         .andExpect(jsonPath("$.id").value(42))
                                         .andExpect(jsonPath("$.author").value("Arthur"))
                                         .andExpect(jsonPath("$.title").value("Great Expectations"))
                                         .andExpect(jsonPath("$.published").value(true));
+
                 }
 
                 @Test
                 public void contentTypeNotJson() throws Exception {
-                        ResultActions positiveCase = mvc.perform(post("/books")
+                        ResultActions testCase = mvc.perform(post("/books")
                                         .contentType(MediaType.TEXT_PLAIN)
                                         .content("{\"author\":\"Arthur\",\"title\":\"Great Expectations\",\"published\":true}"));
-                        positiveCase.andExpect(status().isUnsupportedMediaType());
+                        testCase.andExpect(status().isUnsupportedMediaType());
                 }
 
         }
@@ -86,9 +87,9 @@ public class BookControllerTests {
         @Nested
         class getBooksTests {
                 @Test
-                public void normalCase() throws Exception {
-                        ResultActions positiveCase = mvc.perform(get("/books"));
-                        positiveCase.andExpect(status().isOk())
+                public void getBooks() throws Exception {
+                        ResultActions testCase = mvc.perform(get("/books"));
+                        testCase.andExpect(status().isOk())
                                         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                                         .andExpect(jsonPath("$[0].id").value(42))
                                         .andExpect(jsonPath("$[0].author").value("Arthur"))
@@ -106,9 +107,10 @@ public class BookControllerTests {
         class deleteBookTests {
 
                 @Test
-                public void normalCase() throws Exception {
-                        ResultActions positiveCase = mvc.perform(delete("/books/56"));
-                        positiveCase.andExpect(status().isOk());
+                public void deleteBook() throws Exception {
+                        ResultActions testCase = mvc.perform(delete("/books/56"));
+                        testCase.andExpect(status().isOk());
+                        Mockito.verify(bookService, Mockito.times(1)).delete(56L);
                 }
 
         }

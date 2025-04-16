@@ -34,7 +34,7 @@ public class BookServiceTests {
         @BeforeEach
         public void setup() {
             Book testBookNormal1 = new Book();
-            testBookNormal1.setId((long) 42);
+            testBookNormal1.setId(42L);
             testBookNormal1.setAuthor("Arthur");
             testBookNormal1.setTitle("Great Expectations");
             testBookNormal1.setPublished(true);
@@ -50,7 +50,7 @@ public class BookServiceTests {
         public void saveBook() throws Exception {
             Book bookInput = new Book("Great Expectations", "Arthur", true);
             Book createdBook = bookService.create(bookInput);
-            Assertions.assertEquals((long) 42, createdBook.getId());
+            Assertions.assertEquals(42L, createdBook.getId());
             Assertions.assertEquals(bookInput.getAuthor(), createdBook.getAuthor());
             Assertions.assertEquals(bookInput.getPublished(), createdBook.getPublished());
             Assertions.assertEquals(bookInput.getTitle(), createdBook.getTitle());
@@ -64,12 +64,12 @@ public class BookServiceTests {
         @BeforeEach
         public void setup() {
             Book testBookNormal1 = new Book();
-            testBookNormal1.setId((long) 42);
+            testBookNormal1.setId(42L);
             testBookNormal1.setAuthor("Arthur");
             testBookNormal1.setTitle("Great Expectations");
             testBookNormal1.setPublished(true);
             Book testBookNormal2 = new Book();
-            testBookNormal2.setId((long) 43);
+            testBookNormal2.setId(43L);
             testBookNormal2.setAuthor("Bob");
             testBookNormal2.setTitle("Builder Book");
             testBookNormal2.setPublished(false);
@@ -115,11 +115,11 @@ public class BookServiceTests {
         @Test
         public void authorNull_publishedNull() throws Exception {
             List<Book> books = bookService.list(null, null);
-            Assertions.assertEquals((long) 42, books.get(0).getId());
+            Assertions.assertEquals(42L, books.get(0).getId());
             Assertions.assertEquals("Arthur", books.get(0).getAuthor());
             Assertions.assertEquals(true, books.get(0).getPublished());
             Assertions.assertEquals("Great Expectations", books.get(0).getTitle());
-            Assertions.assertEquals((long) 43, books.get(1).getId());
+            Assertions.assertEquals(43L, books.get(1).getId());
             Assertions.assertEquals("Bob", books.get(1).getAuthor());
             Assertions.assertEquals(false, books.get(1).getPublished());
             Assertions.assertEquals("Builder Book", books.get(1).getTitle());
@@ -128,7 +128,7 @@ public class BookServiceTests {
         @Test
         public void authorValid_publishedNull() throws Exception {
             List<Book> books = bookService.list("AuthorFoo", null);
-            Assertions.assertEquals((long) 42, books.get(0).getId());
+            Assertions.assertEquals(42L, books.get(0).getId());
             Assertions.assertEquals("Arthur", books.get(0).getAuthor());
             Assertions.assertEquals(true, books.get(0).getPublished());
             Assertions.assertEquals("Great Expectations", books.get(0).getTitle());
@@ -137,7 +137,7 @@ public class BookServiceTests {
         @Test
         public void authorNull_publishedValid() throws Exception {
             List<Book> books = bookService.list(null, true);
-            Assertions.assertEquals((long) 43, books.get(0).getId());
+            Assertions.assertEquals(43L, books.get(0).getId());
             Assertions.assertEquals("Bob", books.get(0).getAuthor());
             Assertions.assertEquals(false, books.get(0).getPublished());
             Assertions.assertEquals("Builder Book", books.get(0).getTitle());
@@ -146,11 +146,11 @@ public class BookServiceTests {
         @Test
         public void authorValid_publishedValid() throws Exception {
             List<Book> books = bookService.list("AuthorFoo", true);
-            Assertions.assertEquals((long) 43, books.get(0).getId());
+            Assertions.assertEquals(43L, books.get(0).getId());
             Assertions.assertEquals("Bob", books.get(0).getAuthor());
             Assertions.assertEquals(false, books.get(0).getPublished());
             Assertions.assertEquals("Builder Book", books.get(0).getTitle());
-            Assertions.assertEquals((long) 43, books.get(1).getId());
+            Assertions.assertEquals(43L, books.get(1).getId());
             Assertions.assertEquals("Bob", books.get(1).getAuthor());
             Assertions.assertEquals(false, books.get(1).getPublished());
             Assertions.assertEquals("Builder Book", books.get(1).getTitle());
@@ -163,13 +163,14 @@ public class BookServiceTests {
 
         @BeforeEach
         public void setup() {
-            Mockito.doNothing().when(bookRepository).deleteById((long) 42);
+            Mockito.doNothing().when(bookRepository).deleteById(42L);
         }
 
         @Test
         public void deleteCalled() throws Exception {
-            bookService.delete((long) 42);
-            Mockito.verify(bookRepository, Mockito.times(1)).deleteById((long) 42);
+            Long id = 42L;
+            bookService.delete(id);
+            Mockito.verify(bookRepository, Mockito.times(1)).deleteById(id);
         }
 
     }

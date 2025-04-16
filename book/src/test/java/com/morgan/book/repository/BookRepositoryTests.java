@@ -183,7 +183,7 @@ public class BookRepositoryTests {
 
         @Test // deleting by an inexisting book id will be silently ignored
         public void deleteInexistingBook() throws Exception {
-            bookRepository.deleteById((long) -1);
+            bookRepository.deleteById(-1L);
             List<Book> books = bookRepository.findAll();
             Assertions.assertEquals(5, books.size());
             for (int i = 0; i < 5; i++) {
