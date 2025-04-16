@@ -20,24 +20,24 @@ import com.morgan.book.service.BookService;
 @RequestMapping(path = "/books", produces = MediaType.APPLICATION_JSON_VALUE)
 public class BookController {
 
-  @Autowired
-  private BookService bookService;
+    @Autowired
+    private BookService bookService;
 
-  @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public Book postBook(@RequestBody Book book) {
-    Book createdBook = bookService.create(book);
-    return createdBook;
-  }
+    @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Book postBook(@RequestBody Book book) {
+        Book createdBook = bookService.create(book);
+        return createdBook;
+    }
 
-  @GetMapping("")
-  public List<Book> getBooks(@RequestParam(required = false) String author,
-      @RequestParam(required = false) Boolean published) {
-    return bookService.list(author, published);
-  }
+    @GetMapping("")
+    public List<Book> getBooks(@RequestParam(required = false) String author,
+            @RequestParam(required = false) Boolean published) {
+        return bookService.list(author, published);
+    }
 
-  @DeleteMapping("/{id}")
-  public void deleteBook(@PathVariable Long id) {
-    bookService.delete(id);
-  }
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable Long id) {
+        bookService.delete(id);
+    }
 
 }

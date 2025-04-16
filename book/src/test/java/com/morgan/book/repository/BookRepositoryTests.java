@@ -114,7 +114,7 @@ public class BookRepositoryTests {
             for (int i = 0; i < 3; i++) {
                 Book book = books.get(i);
                 Assertions.assertNotNull(book.getId());
-                Assertions.assertEquals("Title" + String.valueOf(i*2), book.getTitle());
+                Assertions.assertEquals("Title" + String.valueOf(i * 2), book.getTitle());
                 Assertions.assertEquals("Author0", book.getAuthor());
                 Assertions.assertEquals(true, book.getPublished());
             }
@@ -132,7 +132,7 @@ public class BookRepositoryTests {
             for (int i = 0; i < 3; i++) {
                 Book book = books.get(i);
                 Assertions.assertNotNull(book.getId());
-                Assertions.assertEquals("Title" + String.valueOf(i*2), book.getTitle());
+                Assertions.assertEquals("Title" + String.valueOf(i * 2), book.getTitle());
                 Assertions.assertEquals("Author0", book.getAuthor());
                 Assertions.assertEquals(true, book.getPublished());
             }
