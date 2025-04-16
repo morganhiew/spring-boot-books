@@ -4,16 +4,16 @@ This is a demo Spring Boot API project
 
 ## Quickstart
 
-1. install Java jdk-24 (https://www.oracle.com/hk/java/technologies/downloads/#java24)
+1. Install Java jdk-24 (https://www.oracle.com/hk/java/technologies/downloads/#java24)
 
-2. check Java version using `java --version` on terminal
+2. Check Java version using `java --version` on terminal. Make sure environmment variable `JAVA_HOME` is pointed towards the jdk folder, e.g. `C:\Program Files\Java\jdk-24`.
 
 3. cd to `/book` then run command 
 ```
 ./mvnw spring-boot:run
 ```
 
-4. default port is `8080`. From browser or using tools like Postman, check 
+4. Default port is `8080`. From browser or using tools like Postman, check 
 `localhost:8080/health` and you should see the `Healthy!` response. If you need to use another port, for example add `server.port=8081` to `application.properties` to set it to run on port 8081.
 
 ## APIs
