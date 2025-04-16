@@ -8,8 +8,8 @@ import org.springframework.test.context.TestPropertySource;
 @TestPropertySource(locations = "classpath:application-unittest.properties")
 class BookApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

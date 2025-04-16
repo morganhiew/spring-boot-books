@@ -14,7 +14,7 @@ mvnw spring-boot:run
 ```
 
 4. default port is `8080`. From browser or using tools like Postman, check 
-`localhost:8080/health` and you should see the `Healthy!` response
+`localhost:8080/health` and you should see the `Healthy!` response. If you need to use another port, for example add `server.port=8081` to `application.properties` to set it to run on port 8081.
 
 ## APIs
 
@@ -35,18 +35,17 @@ None
 }[]
 ```
 ### POST /Books
+Submit a book
 #### Parameters
 application/json.
 ```
 {
-    id: number,
     title: string,
     author: string,
     published: boolean
 }
 ```
 #### Responses
-Submit a book
 - 200. The created book
 ```
 {
@@ -70,7 +69,7 @@ Submit a book
 - 415. When request body is not type is not json.
 ```
 {
-    "timestamp": timestamp,
+    "timestamp": string,
     "status": 415,
     "error": "Unsupported Media Type",
     "message": string,
@@ -84,7 +83,7 @@ Delete a book.
 #### Parameters
 - id. Id of a book.
 #### Responses
-- 200. Book deleted. Note that if the id does not exist 200 will still be returned.
+- 200. Book deleted. Note that if the id does not exist, nothing will be deleted and 200 will still be returned.
 
 ## Dev Notes
 
@@ -93,3 +92,4 @@ Delete a book.
 - On testing mode, DB is set to h2 in-memory database.
 
 ## Screenshot
+![ApiScreenShot](api_screenshot.jpeg)
