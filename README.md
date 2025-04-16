@@ -10,7 +10,7 @@ This is a demo Spring Boot API project
 
 3. cd to `/book` then run command 
 ```
-mvnw spring-boot:run
+./mvnw spring-boot:run
 ```
 
 4. default port is `8080`. From browser or using tools like Postman, check 
@@ -46,7 +46,7 @@ application/json.
 }
 ```
 #### Responses
-- 200. The created book
+- 200\. The created book
 ```
 {
     id: number,
@@ -55,7 +55,7 @@ application/json.
     published: boolean
 }
 ```
-- 400. When the book input is invalid.
+- 400\. When the book input is invalid.
 ```
 {
     "timestamp": string,
@@ -66,7 +66,7 @@ application/json.
     "path": string
 }
 ```
-- 415. When request body is not type is not json.
+- 415\. When request body is not type is not json.
 ```
 {
     "timestamp": string,
@@ -83,7 +83,7 @@ Delete a book.
 #### Parameters
 - id. Id of a book.
 #### Responses
-- 200. Book deleted. Note that if the id does not exist, nothing will be deleted and 200 will still be returned.
+- 200\. Book deleted. Note that if the id does not exist, nothing will be deleted and 200 will still be returned.
 
 ## Dev Notes
 
@@ -91,5 +91,8 @@ Delete a book.
 
 - On testing mode, DB is set to h2 in-memory database.
 
-## Screenshot
+## API Call Screenshot
+
+Screenshot of example API calls using Postman.
+
 ![ApiScreenShot](api_screenshot.jpeg)
